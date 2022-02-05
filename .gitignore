@@ -2,3 +2,5 @@
 .project
 .classpath
 .settings
+company.db
+.DS_Store

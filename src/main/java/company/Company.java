@@ -35,7 +35,7 @@ public class Company {
 			e.printStackTrace();
 		}
 		
-		
+		createTables();
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class Company {
 	 */
 	public boolean createTables() {
 		String createCustomer = "CREATE TABLE IF NOT EXISTS customer (id_customer INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255), idNumber int)";
-		String createMovie = "CREATE TABLE IF NOT EXISTS movie (id_movie INTEGER PRIMARY KEY AUTOINCREMENT, namne varchar(255), author varchar(255))";
+		String createMovie = "CREATE TABLE IF NOT EXISTS movie (id_movie INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255), author varchar(255))";
 		String createRental = "CREATE TABLE IF NOT EXISTS rental (id_rental INTEGER PRIMARY KEY AUTOINCREMENT, id_customer int, id_movie int)";
 		
 		try {
@@ -90,7 +90,7 @@ public class Company {
 	 */
 	public boolean insertMovie(String name, String author) {
 		try {
-			PreparedStatement prepStmt = conn.prepareStatement("insert into customer values (NULL, ?, ?);");
+			PreparedStatement prepStmt = conn.prepareStatement("insert into movie values (NULL, ?, ?);");
 			prepStmt.setString(1, name);
 			prepStmt.setString(2, author);
 			prepStmt.execute();
@@ -111,7 +111,7 @@ public class Company {
 	 */
 	public boolean insertRental(int idCustomer, int idMovie) {
 		try {
-			PreparedStatement prepStmt = conn.prepareStatement("insert into customer values (NULL, ?, ?);");
+			PreparedStatement prepStmt = conn.prepareStatement("insert into rental values (NULL, ?, ?);");
 			prepStmt.setInt(1, idCustomer);
 			prepStmt.setInt(2, idMovie);
 			prepStmt.execute();
